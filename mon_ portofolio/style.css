@@ -1,0 +1,148 @@
+:root {
+  --primary-color: #4a7c59;
+  --secondary-color: #f4f6f8;
+  --accent-color: #d9e4dd;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, sans-serif;
+  background: var(--secondary-color);
+  color: #333;
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+/* ===== HEADER ===== */
+header {
+  background: var(--primary-color);
+  color: white;
+  padding: 2rem 1rem;
+  text-align: center;
+
+  /* Ajout de texture fleurie 🌸 */
+  background-image: url('https://www.transparenttextures.com/patterns/flower-power.png');
+  animation: fadeIn 1.5s ease-in-out;
+}
+
+header h1 {
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+}
+
+nav a {
+  color: white;
+  margin: 0 1rem;
+  text-decoration: none;
+  font-weight: bold;
+  transition: color 0.3s;
+}
+
+nav a:hover {
+  color: #fffae3;
+}
+
+/* ===== SECTIONS ===== */
+section {
+  padding: 2rem;
+  max-width: 900px;
+  margin: auto;
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.8s ease-in-out;
+}
+
+section.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ===== CARDS ===== */
+.card {
+  background: white;
+  padding: 1.5rem;
+  margin: 1rem 0;
+  border-radius: 10px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  animation: fadeUp 1s ease-in-out;
+}
+
+h2 {
+  color: var(--primary-color);
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+.skills-list,
+.education-list {
+  list-style: none;
+  padding: 0;
+}
+
+.skills-list li,
+.education-list li {
+  background: var(--accent-color);
+  margin: 0.3rem 0;
+  padding: 0.5rem 1rem;
+  border-radius: 5px;
+}
+
+/* ===== IMAGE DU PROJET ===== */
+.projet img {
+  max-width: 100%;
+  border-radius: 15px;
+  display: block;
+  margin: 0.5rem auto;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  
+  /* Animation flottante et effets */
+  animation: float 3s ease-in-out infinite;
+  transform: scale(0.95);
+  filter: brightness(0.9) saturate(1.2);
+  transition: transform 0.6s ease, filter 0.6s ease, box-shadow 0.6s ease;
+}
+
+.projet img:hover {
+  transform: scale(1.05) rotate(1deg);
+  filter: brightness(1.1) saturate(1.5);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+}
+
+/* ===== FOOTER ===== */
+footer {
+  background: var(--primary-color);
+  color: white;
+  text-align: center;
+  padding: 1rem;
+  margin-top: 2rem;
+  animation: fadeIn 1.5s ease-in-out;
+}
+
+/* ===== ANIMATIONS ===== */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes float {
+  0%   { transform: translateY(0px) scale(0.95); }
+  50%  { transform: translateY(-5px) scale(1); }
+  100% { transform: translateY(0px) scale(0.95); }
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 768px) {
+  header h1 { font-size: 1.5rem; }
+  nav a { display: inline-block; margin: 0.5rem; }
+  section { padding: 1rem; }
+}

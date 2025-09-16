@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mon code, vos idées, notre futur</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Lato:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background: #fff;
+            min-height: 100vh;
+            font-family: 'Lato', 'Montserrat', Arial, sans-serif;
+            transition: background 0.5s;
+        }
+        .accueil-main {
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+        .accueil-title {
+            font-family: 'Montserrat', 'Lato', Arial, sans-serif;
+            font-size: 3em;
+            color: #8e24aa;
+            text-align: center;
+            margin-top: 60px;
+            margin-bottom: 40px;
+            font-weight: 700;
+            letter-spacing: 2px;
+        }
+        .accueil-content {
+            flex: 1;
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        .image-anim-container {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 320px;
+        }
+        /* On supprime l'ancien style .image-anim car on n'utilise plus un <img> */
+        .presentation-text {
+            color: #b462b8;
+            background: transparent;
+            border-radius: 18px;
+            box-shadow: none;
+            padding: 32px 38px;
+            font-size: 1.3em;
+            max-width: 400px;
+            text-align: left;
+            min-height: 120px;
+            font-family: serif;
+        }
+        .btn-container {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            background: transparent;
+        }
+        .accueil-btn {
+            background: #8e24aa;
+            color: #fff;
+            border: none;
+            border-radius: 25px;
+            padding: 16px 38px;
+            font-size: 1.3em;
+            font-weight: bold;
+            cursor: pointer;
+            box-shadow: 0 2px 12px #8e24aa44;
+            transition: background 0.2s, color 0.2s, box-shadow 0.2s;
+            margin-bottom: 32px;
+            font-family: 'Montserrat', 'Lato', Arial, sans-serif;
+        }
+        .accueil-btn:hover {
+            background: #fff;
+            color: #8e24aa;
+            box-shadow: 0 4px 18px #8e24aa44;
+        }
+        .fleur-btn {
+            background: none; 
+            border: none;
+            cursor: pointer;
+            margin-bottom: 10px;
+            outline: none;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .fleur-icon {
+            width: 38px;
+            height: 38px;
+            transition: transform 0.2s;
+        }
+        .fleur-btn:hover .fleur-icon {
+            transform: rotate(18deg) scale(1.1);
+        }
+        @media (max-width: 700px) {
+            .accueil-content {
+                flex-direction: column;
+                align-items: flex-start;
+                max-width: 98vw;
+            }
+            .presentation-text {
+                max-width: 98vw;
+                padding: 18px 10px;
+                font-size: 1em;
+            }
+            .accueil-title {
+                font-size: 2em;
+                margin-top: 30px;
+            }
+            .image-anim-container {
+                min-height: 140px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="accueil-main">
+        <div class="accueil-title">Mon code, vos idées, notre futur</div>
+        <div class="accueil-content">
+            <div class="presentation-text" id="presentation"></div>
+            <div class="image-anim-container">
+                <!-- Animation Lottie responsive -->
+                <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+                <lottie-player 
+                    src="https://assets6.lottiefiles.com/packages/lf20_puciaact.json"  
+                    background="transparent"  
+                    speed="1"  
+                    style="width: 80%; max-width: 300px; height: auto;"  
+                    loop  
+                    autoplay>
+                </lottie-player>
+            </div>
+        </div>
+    </div>
+    <div class="btn-container">
+        <button class="fleur-btn" onclick="changeBgColor()" title="Changer la couleur">
+            <svg class="fleur-icon" viewBox="0 0 64 64" fill="#8e24aa" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="32" cy="32" r="10"/>
+                <ellipse cx="32" cy="12" rx="8" ry="14"/>
+                <ellipse cx="32" cy="52" rx="8" ry="14"/>
+                <ellipse cx="12" cy="32" rx="14" ry="8"/>
+                <ellipse cx="52" cy="32" rx="14" ry="8"/>
+            </svg>
+        </button>
+        <a href="index.html"><button class="accueil-btn">Entrer</button></a>
+    </div>
+    <script>
+        const texte = "Bonjour ! Je m'appelle FOKOU NGOUEGNI MURIEL ANGE, étudiante en Génie informatique à l'IUT de Douala. J'ai 19 ans et je suis toujours en quête d'apprentissage et d'amélioration de mes compétences.";
+        const cible = document.getElementById('presentation');
+        let i = 0;
+        function typeWriter() {
+            if (i < texte.length) {
+                cible.innerHTML += texte.charAt(i);
+                i++;
+                setTimeout(typeWriter, 38);
+            }
+        }
+        typeWriter();
+
+        // Changement de couleur de fond
+        const couleurs = ['#fff', '#fce4ec', '#f3e5f5', '#ede7f6', '#e8eaf6', '#e0f7fa', '#fbe9e7', '#f9fbe7', '#f1f8e9', '#fffde7', '#ffebee', '#f5f5f5'];
+        let idx = 0;
+        function changeBgColor() {
+            idx = (idx + 1) % couleurs.length;
+            document.body.style.background = couleurs[idx];
+        }
+    </script>
+</body>
+</html>

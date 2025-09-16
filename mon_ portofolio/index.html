@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Portfolio Muriel</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600&family=Lato:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    /* RESET */
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body.portfolio-body {
+      font-family: 'Lato', Arial, sans-serif;
+      background: linear-gradient(135deg, #f6d365 0%, #fda085 100%);
+      color: #222;
+      min-height: 100vh;
+      transition: background 0.5s;
+    }
+
+    header {
+      text-align: center;
+      padding: 60px 20px 30px;
+    }
+    header h1 {
+      font-family: 'Poppins', sans-serif;
+      font-size: 2.5rem;
+      margin-bottom: 10px;
+      color: #222;
+    }
+    header p {
+      font-size: 1.1rem;
+      color: #444;
+    }
+
+    nav {
+      margin-top: 20px;
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 15px;
+    }
+    nav a {
+      text-decoration: none;
+      font-weight: 600;
+      color: #fff;
+      background: #d72660;
+      padding: 10px 18px;
+      border-radius: 25px;
+      transition: background 0.3s, transform 0.2s;
+    }
+    nav a:hover {
+      background: #ff4081;
+      transform: translateY(-2px);
+    }
+
+    section {
+      max-width: 900px;
+      margin: 40px auto;
+      padding: 30px 20px;
+      border-radius: 16px;
+      background: rgba(255,255,255,0.85);
+      box-shadow: 0 6px 16px rgba(0,0,0,0.1);
+      cursor: pointer;
+      transition: transform 0.3s;
+    }
+    section:hover {
+      transform: translateY(-5px);
+    }
+    section h2 {
+      font-family: 'Poppins', sans-serif;
+      margin-bottom: 15px;
+      color: #d72660;
+      font-size: 1.8rem;
+      text-align: center;
+    }
+    .section-content {
+      opacity: 0;
+      transition: opacity 0.5s;
+      font-size: 1rem;
+      line-height: 1.6;
+      color: #333;
+      text-align: justify;
+    }
+    .section-content.visible {
+      opacity: 1;
+    }
+
+    /* Bouton fleur (changer bg) */
+    .fleur-btn {
+      background: none;
+      border: none;
+      cursor: pointer;
+      outline: none;
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      z-index: 100;
+    }
+    .fleur-icon {
+      width: 42px;
+      height: 42px;
+      transition: transform 0.2s;
+    }
+    .fleur-btn:hover .fleur-icon {
+      transform: rotate(18deg) scale(1.1);
+    }
+
+    /* Responsive */
+    @media (max-width: 600px) {
+      header {
+        padding: 30px 5px 15px;
+      }
+      header h1 {
+        font-size: 1.2rem;
+        margin-bottom: 6px;
+      }
+      header p {
+        font-size: 0.95rem;
+      }
+      nav {
+        gap: 6px;
+        flex-direction: column;
+        align-items: center;
+      }
+      nav a {
+        font-size: 0.85rem;
+        padding: 7px 10px;
+        border-radius: 18px;
+        width: 90vw;
+        text-align: center;
+      }
+      section {
+        margin: 12px 2vw;
+        padding: 12px 6px;
+        border-radius: 10px;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+      }
+      section h2 {
+        font-size: 1.1rem;
+        margin-bottom: 8px;
+      }
+      .section-content {
+        font-size: 0.95rem;
+        line-height: 1.4;
+      }
+      .fleur-btn {
+        top: 8px;
+        right: 8px;
+      }
+      .fleur-icon {
+        width: 30px;
+        height: 30px;
+      }
+      ul.skills-list {
+        padding-left: 12px;
+      }
+    }
+  </style>
+</head>
+<body class="portfolio-body">
+  <!-- Bouton fleur -->
+  <button class="fleur-btn" onclick="changeBgColor()" title="Changer la couleur">
+    <svg class="fleur-icon" viewBox="0 0 64 64" fill="#d72660" xmlns="http://www.w3.org/2000/svg">
+      <circle cx="32" cy="32" r="10"/>
+      <ellipse cx="32" cy="12" rx="8" ry="14"/>
+      <ellipse cx="32" cy="52" rx="8" ry="14"/>
+      <ellipse cx="12" cy="32" rx="14" ry="8"/>
+      <ellipse cx="52" cy="32" rx="14" ry="8"/>
+    </svg>
+  </button>
+
+  <!-- Header -->
+  <header>
+    <h1>Bienvenue sur mon portfolio</h1>
+    <p>Je suis Muriel, étudiante passionnée de développement web, toujours en apprentissage.</p>
+    <nav>
+      <a href="#Presentation">Présentation</a>
+      <a href="#Parcours">Parcours</a>
+      <a href="#Projets">Projets</a>
+      <a href="#Competences">Compétences</a>
+      <a href="#Ambitions">Ambitions</a>
+      <a href="#Contact">Contact</a>
+    </nav>
+  </header>
+
+  <!-- Sections -->
+  <section onclick="revealSection(this)" id="Presentation">
+    <h2>À propos de moi</h2>
+    <div class="section-content" data-text="Bonjour ! Je m'appelle FOKOU NGOUEGNI MURIEL ANGE j'ai 19 ans je suis une étudiante passionnée d'informatique encore en apprentissage .J'apprends vite et je mets le coeur a l'ouvrage, étudiante en deuxième année à l'IUT de Douala en Génie informatique. Je suis toujours en quête d'apprentissage et d'amélioration de mes compétences."></div>
+  </section>
+
+  <section onclick="revealSection(this)" id="Parcours">
+    <h2>Mon Parcours</h2>
+    <div class="section-content" data-text="2024 - aujourd'hui : Étudiante en Génie informatique à l'IUT de Douala
+2023 : Baccalauréat D"></div>
+  </section>
+
+<section onclick="revealSection(this)" id="Projets">
+  <h2>Mes Projets</h2>
+  <div class="section-content" data-text="Projet : Site de prêt d'argent en ligne
+Description : Réalisation scolaire en 1ère année. Plateforme permettant à des particuliers, respectant des règles précises, d'effectuer des prêts avec un montant maximal et un délai de remboursement défini. Des fonctionnalités de gestion des utilisateurs et de suivi des prêts ont été intégrées pour améliorer l'expérience utilisateur. Ce site impose des règles strictes pour les emprunteurs et les prêteurs, limitant l'accès aux usagers ne respectant pas les critères d'âge.
+
+Project: Online Loan Website
+Description: School project in first year. Platform allowing individuals, respecting specific rules, to make loans with a maximum amount and a defined repayment period. User management and loan tracking features were added to improve user experience. Strict rules for borrowers and lenders directly limit access for users not meeting age requirements."></div>
+  <div style="margin: 25px 0; text-align: center;"></div>
+  <h3 style="color:#d72660; font-family:'Poppins',sans-serif; margin-bottom:10px;">Compétences mobilisées</h3>
+  <ul class="skills-list" style="margin-bottom: 0;">
+    <li>HTML</li>
+    <li>CSS</li>
+    <li>Pack Office (Word, PowerPoint)</li>
+    <li>Organisation et travail en équipe</li>
+    <li>Créativité et innovation</li>
+  </ul>
+</section>
+
+  <section onclick="revealSection(this)" id="Ambitions">
+    <h2>Mes Ambitions</h2>
+    <div class="section-content" data-text="Je souhaite continuer à apprendre et me perfectionner dans le développement web, et proposer mes services à de petites entreprises pour les aider à se digitaliser. Mon but est d'apprendre continuellement et de développer mon expérience professionnelle."></div>
+  </section>
+
+  <section onclick="revealSection(this)" id="Contact">
+    <h2>Me Contacter</h2>
+    <div class="section-content" data-text="Vous pouvez me contacter par email : Murielfokou102@gmail.com
+Téléphone : 690132375 / 671139932
+Adresse : Douala, Logpom"></div>
+    <div style="margin-top: 18px;">
+      <p><strong>Email :</strong> <a href="mailto:Murielfokou102@gmail.com">Murielfokou102@gmail.com</a></p>
+      <p><strong>Téléphone :</strong> <a href="tel:690132375">690132375</a> / <a href="tel:671139932">671139932</a></p>
+      <p><strong>Adresse :</strong> Douala, Logpom</p>
+    </div>
+  </section>
+
+  <!-- Scripts -->
+  <script>
+    const couleurs = [
+      'linear-gradient(135deg, #f6d365 0%, #fda085 100%)',
+      'linear-gradient(135deg, #a1c4fd 0%, #c2e9fb 100%)',
+      'linear-gradient(135deg, #fbc2eb 0%, #a6c1ee 100%)',
+      'linear-gradient(135deg, #84fab0 0%, #8fd3f4 100%)',
+      'linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%)'
+    ];
+    let idx = 0;
+    function changeBgColor() {
+      idx = (idx + 1) % couleurs.length;
+      document.body.style.background = couleurs[idx];
+    }
+
+    function typeWriterSection(element, texte) {
+      element.innerHTML = "";
+      let i = 0;
+      function write() {
+        if (i < texte.length) {
+          element.innerHTML += texte.charAt(i);
+          i++;
+          setTimeout(write, 20);
+        }
+      }
+      write();
+    }
+    function revealSection(section) {
+      const content = section.querySelector('.section-content');
+      if (!content.classList.contains('visible')) {
+        content.classList.add('visible');
+        typeWriterSection(content, content.getAttribute('data-text'));
+      }
+    }
+  </script>
+</body>
+</html>
